@@ -29,49 +29,35 @@
             @csrf            
             <input type="hidden" name="remember" value="true">
               <div class="relative">
-                  <div class="absolute right-0 mt-4">
-                      {{-- <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                      </svg> --}}
-                    </div>
                     <div>
                      <label class="text-sm font-bold text-gray-700 tracking-wide">Name</label>
                      <x-input id="name" class="w-full text-base py-2 border-b" type="text" name="name" :value="old('name')" required autofocus />
                    </div>
-                        {{-- @if ('email')
-                    {{message}}        
-                    @endif --}} 
 
                     <div class="mt-2 content-center">
                       <label class="text-sm font-bold text-gray-700 tracking-wide">Email</label>
                       <x-input id="email" class="block mt-1 w-full border-b" type="email" name="email" :value="old('email')" required />
-                  </div>
-                  {{-- @if ('password')
-                      {{message}}
-                    @endif --}}
+                    </div>
 
                   <div class="mt-2 content-center">
                     <label class="text-sm font-bold text-gray-700 tracking-wide">Password</label>
                     <x-input id="password" class="block mt-1 w-full border-b" type="password" name="password" required autocomplete="new-password"/> 
-                    {{-- @if ('password')
-                      {{message}}
-                    @endif --}}
-
                   </div>
+
                   <div class="mt-2 content-center">
                     <label class="text-sm font-bold text-gray-700 tracking-wide">Confirm Password</label>
                     <x-input id="password_confirmation" class="block mt-1 w-full border-b" type="password" name="password_confirmation" required />
                   </div>
 
                   </div>
+
                   <div class="flex items-center justify-between">
                           <x-button class="w-full flex justify-center bg-indigo-500 text-gray-100 p-4 rounded-full tracking-wide
                             font-semibold  focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300">
                             {{ __('Register') }}
                           </x-button>
                   </div>
+                  
                   <div class="text-sm">
                     @if (Route::has('password.request'))
                       <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{route('login')}}">
