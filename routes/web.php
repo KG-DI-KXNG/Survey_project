@@ -26,4 +26,4 @@ require __DIR__.'/auth.php';
 
 Route::post('survey', [Survey::class, 'index'])->name('surveyForm');
 
-Route::view('main', 'livewire.form');
+// Route::view('main', 'livewire.form');
