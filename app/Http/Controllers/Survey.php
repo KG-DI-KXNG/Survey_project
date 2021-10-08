@@ -7,29 +7,18 @@ use MattDaneshvar\Survey\Models\Survey as ContractsSurvey;
 
 class Survey extends Controller
 {
-   public function index(){
+   public function index(Request $request){
+   
+    $survey['surveyName'] = $request->formTitle;
+    $survey['section'] = $request->section;
 
-        $survey = ContractsSurvey::create(['name' => 'Cat Population Survey']);
-        dd($survey);
+    return view('livewire.form')->with($survey);
 
-        $survey->questions()->create([
-            'content' => 'How many cats do you have?',
-            'type' => 'number',
-            'rules' => ['numeric', 'min:0']
-        ]);
-        
-        $survey->questions()->create([
-            'content' => 'What\'s the name of your first cat',
-        ]);
-        
-        $survey->questions()->create([
-            'content' => 'Would you want a new cat?',
-            'type' => 'radio',
-            'options' => ['Yes', 'Oui']
-        ]);
-        
-        return view('standard', ['survey' => $survey]);
+    // $survey = ContractsSurvey::create(['name' => $request->formTitle]);
 
-    
+
+
+
+        // dd($survey);
    }
 }
