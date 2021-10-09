@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSurveySetTable extends Migration
+class CreateSurveySetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreateSurveySetTable extends Migration
 		$table->id();
 		$table->string('title',200);
 		$table->text('description');
-		$table->integer('user_id',30);
+		$table->foreignId('user_id');
 		$table->date('start_date');
 		$table->date('end_date');
 		$table->datetime('date_created')->useCurrent();

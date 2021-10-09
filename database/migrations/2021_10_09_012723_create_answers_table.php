@@ -16,10 +16,10 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
 
 		$table->id();
-		$table->integer('survey_id',30);
-		$table->integer('user_id',30);
+        $table->foreignId('survey_id')->references('id')->on('survey_set');
+		$table->foreignId('user_id');
 		$table->text('answer');
-		$table->integer('question_id',30);
+		$table->foreignId('question_id');
 		$table->datetime('date_created')->useCurrent();
 
         });

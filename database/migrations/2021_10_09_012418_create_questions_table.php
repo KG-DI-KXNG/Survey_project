@@ -19,8 +19,8 @@ class CreateQuestionsTable extends Migration
 		$table->text('question');
 		$table->text('frm_option');
 		$table->string('type',50);
-		$table->integer('order_by',11);
-		$table->integer('survey_id',30);
+		// $table->integer('order_by',11);
+		$table->foreignId('survey_id')->references('id')->on('survey_set');
 		$table->datetime('date_created')->useCurrent();
 
         });
