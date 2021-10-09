@@ -42,6 +42,9 @@
                 {{ $slot }}
             </main>
         </div>
+        <div class="absolute top-2 bg-gray-00 rounded-full right-0 m-2 z-50 my-auto h-auto w-18 p-2">
+            <button class="js-change-theme focus:outline-none">🌙</button>
+          </div>
     </body>
     <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@4"></script>
@@ -54,7 +57,7 @@
         //Toggle mode
         const toggle = document.querySelector('.js-change-theme');
         const body = document.querySelector('#body');
-        // const select = document.querySelector('select');
+        const select = document.querySelector('select');
         const profile = document.getElementById('profile');
         const input = document.querySelectorAll('input');
         
@@ -67,7 +70,7 @@
             input.forEach(element => {
                 element.classList.add('bg-gray-900');
             });
-            // select.classList.add('bg-gray-900','text-gray-100');
+            select.classList.add('bg-gray-900','text-gray-100');
             body.classList.add('text-gray-100');
             profile.classList.remove('bg-white');
             profile.classList.add('bg-gray-900');
@@ -77,7 +80,7 @@
             input.forEach(element => {
                 element.classList.remove('bg-gray-900');
             });
-            // select.classList.remove('bg-gray-900','text-gray-100');
+            select.classList.remove('bg-gray-900','text-gray-100');
             body.classList.remove('text-gray-100');
             body.classList.add('text-gray-900');
             profile.classList.remove('bg-gray-900');			

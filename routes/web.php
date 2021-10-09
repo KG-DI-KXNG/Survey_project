@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\question;
 use App\Http\Controllers\Survey;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,9 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::post('survey', [Survey::class, 'index'])->name('surveyForm');
+Route::post('survey', [Survey::class, 'index'])->name('surveyIndex');
+Route::get('surveyquestion', [Survey::class, 'show'])->name('surveyForm');
 
-Route::view('main', 'surveyForm');
+Route::view('surveyform.', 'surveyForm');
+
+Route::resource('questions', question::class);

@@ -5,32 +5,48 @@ namespace App\Http\Controllers;
 use App\Models\survey_set;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use MattDaneshvar\Survey\Models\Survey as ContractsSurvey;
 
 class Survey extends Controller
 {
    public function index(Request $request){
    
-   $request->validate([
-      'title'=>'required',
-      'desc'=>'required',
-      'start'=>'required',
-      'end'=>'required',
-   ]);
+   // $request->validate([
+   //    'formTitle'=>'required|unique:survey_set,title',
+   //    'formDesc'=>'required',
+   //    'formStart'=>'required',
+   //    'formEnd'=>'required',
+   // ]);
 
-   $survey['surveyName'] = $request->title;
-   $survey['surveyDesc'] = $request->desc;
-   $survey['surveyStart'] = $request->start;
-   $survey['surveyEnd'] = $request->end;
+   $survey['surveyName'] = $request->formTitle;
+   $survey['surveyDesc'] = $request->formDesc;
+   $survey['surveyStart'] = $request->formStart;
+   $survey['surveyEnd'] = $request->formEnd;
 
-   // $survey = new survey_set();
-   // $survey->title = $request->title;
-   // $survey->description = $request->desc;
-   // $survey->user_id = Auth::id();
-   // $survey->start_date = $request->start;
-   // $survey->end_date = $request->end;
-   // $survey->save();
+   session()->put($survey);
 
-    return view('surveyForm')->with($survey);
+   // $s = auth()->user()->getSurvey()->create([
+   //    'title'=> $request->formTitle,
+   //    'description'=>$request->formDesc,
+   //    'start_date'=>$request->formStart,
+   //    'end_date'=>$request->formEnd,
+   // ]);
+
+   // $s = new survey_set();
+   // $s->title = $request->formTitle;
+   // $s->description = $request->formDesc;
+   // $s->user_id = Auth::id();
+   // $s->start_date = $request->formStart;
+   // $s->end_date = $request->formEnd;
+   // $s->save();
+
+    return redirect()->route('surveyForm');
+   }
+
+   public function show(){
+     if(session()->missing('surveyName')){
+        return redirect()->back();
+     }
+     $surveyId = survey_set::where('title',session()->get('surveyName'))->value('id');
+      return view('surveyForm',['surveyId'=>$surveyId]);
    }
 }

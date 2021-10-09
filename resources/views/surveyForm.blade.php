@@ -1,22 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{__('Dashboard')}}
-        </h2>
-        <h2 class="font-semibold text-sm bg-red-500 rounded-md p-2">{{__('Log Out')}}</h2>
+        @include('layouts.navigation')
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <form id="survey-form" action="#" method="POST">@csrf
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 border-b border-gray-200 text-gray-900" id="body">
+                    <form id="survey-form" action="" method="POST">@csrf
 
                         <div class="grid grid-cols-6 gap-6 pt-8">
                           <div class="col-span-6 sm:col-span-3">
-            
+                            
                             <label for="first_name" class="block text-sm font-medium text-gray-600">
-                              First name
+                              First name 
                             </label>
                             <div class="mt-1 flex rounded-md">
                               <input id="first_name" type="text" name="name" class="form-input block w-full h-10 px-4 mb-2 border
@@ -34,7 +31,7 @@
                             <div class="mt-1 flex rounded-md">
                               <input id="name" type="text" name="name" class="form-input block w-full h-10 px-4 mb-2 border
                               border-gray-300 rounded-md
-                              sm:text-sm placeholder-gray-400" placeholder="Your last name" required></input>
+                              sm:text-sm placeholder-gray-400" placeholder="Your last name" required />
                             </div>
             
                           </div>
@@ -97,7 +94,7 @@
                                       class="form-radio h-4 w-4 border-gray-300 rounded">
                                   </div>
                                   <div class="ml-3 text-sm">
-                                    <label for="comments" class="font-medium text-gray-700">Definitely</label>
+                                    <input type="text" value="Yes">
                                   </div>
                                 </div>
             
@@ -187,6 +184,8 @@
                         </div>
             
                       </form>
+
+                      <a href="{{route('questions.create', ['id'=>$surveyId])}}"> Add New Question</a>
                 </div>
             </div>
         </div>

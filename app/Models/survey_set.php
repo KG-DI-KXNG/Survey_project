@@ -14,9 +14,15 @@ class survey_set extends Model
         'start_date',
         'end_date',
     ];
+
+    protected $table = "survey_set";
+    public $timestamps = false;
     use HasFactory;
 
     public function getUser(){
         return $this->belongsTo(User::class);
+    }
+    public function getquestion(){
+        return $this->hasMany(question::class);
     }
 }
